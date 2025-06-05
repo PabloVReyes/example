@@ -10,7 +10,7 @@ import { ArrowLeft as ArrowLeftIcon } from '@phosphor-icons/react/dist/ssr/Arrow
 import { config } from '@/config';
 import { paths } from '@/paths';
 
-export const metadata = { title: `Not found | Errors | ${config.site.name}` } satisfies Metadata;
+export const metadata = { title: `Not found | ${config.site.name}` } satisfies Metadata;
 
 export default function NotFound(): React.JSX.Element {
   return (
@@ -25,10 +25,7 @@ export default function NotFound(): React.JSX.Element {
           />
         </Box>
         <Typography variant="h3" sx={{ textAlign: 'center' }}>
-          404: The page you are looking for isn&apos;t here
-        </Typography>
-        <Typography color="text.secondary" variant="body1" sx={{ textAlign: 'center' }}>
-          You either tried some shady route or you came here by mistake. Whichever it is, try using the navigation
+          404: La pagina a la que quieres ingresar no existe
         </Typography>
         <Button
           component={RouterLink}
@@ -36,7 +33,7 @@ export default function NotFound(): React.JSX.Element {
           startIcon={<ArrowLeftIcon fontSize="var(--icon-fontSize-md)" />}
           variant="contained"
         >
-          Go back to home
+          Regresar
         </Button>
       </Stack>
     </Box>

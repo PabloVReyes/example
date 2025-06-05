@@ -23,13 +23,12 @@ function noop(): void {
 }
 
 export interface Customer {
-  id: string;
-  avatar: string;
+  id: number;
   name: string;
   email: string;
-  address: { city: string; state: string; country: string; street: string };
+  address: string;
   phone: string;
-  createdAt: Date;
+  createdAt: any;
 }
 
 interface CustomersTableProps {
@@ -73,11 +72,11 @@ export function CustomersTable({
                   }}
                 />
               </TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Email</TableCell>
-              <TableCell>Location</TableCell>
-              <TableCell>Phone</TableCell>
-              <TableCell>Signed Up</TableCell>
+              <TableCell>Nombre</TableCell>
+              <TableCell>Correo</TableCell>
+              <TableCell>Localización</TableCell>
+              <TableCell>Telefono</TableCell>
+              <TableCell>Registo</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -100,13 +99,13 @@ export function CustomersTable({
                   </TableCell>
                   <TableCell>
                     <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
-                      <Avatar src={row.avatar} />
+                      <Avatar />
                       <Typography variant="subtitle2">{row.name}</Typography>
                     </Stack>
                   </TableCell>
                   <TableCell>{row.email}</TableCell>
                   <TableCell>
-                    {row.address.city}, {row.address.state}, {row.address.country}
+                    {row.address}
                   </TableCell>
                   <TableCell>{row.phone}</TableCell>
                   <TableCell>{dayjs(row.createdAt).format('MMM D, YYYY')}</TableCell>
