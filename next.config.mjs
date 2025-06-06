@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const config = {
     output: 'export',
-    basePath: '/example', // cambia esto
+    basePath: '/example',
     trailingSlash: true,
 };
 
