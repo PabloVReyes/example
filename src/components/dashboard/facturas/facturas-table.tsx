@@ -14,7 +14,6 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import dayjs from 'dayjs';
 
 import { useSelection } from '@/hooks/use-selection';
 import { Button, ButtonGroup } from '@mui/material';
@@ -23,30 +22,29 @@ function noop(): void {
   // do nothing
 }
 
-export interface Customer {
+export interface Factura {
   id: number;
   name: string;
-  email: string;
-  address: string;
-  phone: string;
-  createdAt: any;
+  price: number;
+  amount: number;
+  createdAt: string;
 }
 
-interface CustomersTableProps {
+interface FacturasTableProps {
   count?: number;
   page?: number;
-  rows?: Customer[];
+  rows?: Factura[];
   rowsPerPage?: number;
 }
 
-export function CustomersTable({
+export function FacturasTable({
   count = 0,
   rows = [],
   page = 0,
   rowsPerPage = 0,
-}: CustomersTableProps): React.JSX.Element {
+}: FacturasTableProps): React.JSX.Element {
   const rowIds = React.useMemo(() => {
-    return rows.map((customer) => customer.id);
+    return rows.map((producto) => producto.id);
   }, [rows]);
 
   const { selectAll, deselectAll, selectOne, deselectOne, selected } = useSelection(rowIds);
@@ -73,16 +71,15 @@ export function CustomersTable({
                   }}
                 />
               </TableCell>
-              <TableCell>Nombre</TableCell>
-              <TableCell>Correo</TableCell>
-              <TableCell>Localización</TableCell>
-              <TableCell>Telefono</TableCell>
+              <TableCell>Identificador</TableCell>
+              <TableCell>Usuario</TableCell>
+              <TableCell>Producto</TableCell>
               <TableCell>Registo</TableCell>
               <TableCell>Acciones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => {
+            {rows.map((row: any) => {
               const isSelected = selected?.has(row.id);
 
               return (
@@ -99,26 +96,27 @@ export function CustomersTable({
                       }}
                     />
                   </TableCell>
+                  <TableCell>{row.id}</TableCell>
                   <TableCell>
                     <Stack sx={{ alignItems: 'center' }} direction="row" spacing={2}>
                       <Avatar />
-                      <Typography variant="subtitle2">{row.name}</Typography>
+                      <Typography variant="subtitle2">{row.user}</Typography>
                     </Stack>
                   </TableCell>
-                  <TableCell>{row.email}</TableCell>
                   <TableCell>
-                    {row.address}
+                    {row.name}
                   </TableCell>
-                  <TableCell>{row.phone}</TableCell>
-                  <TableCell>{dayjs(row.createdAt).format('MMM D, YYYY')}</TableCell>
+                  <TableCell>{row.createdAt}</TableCell>
                   <TableCell>
                     <ButtonGroup>
-                      <Button variant='contained'>
-                        Editar
+                      <Button
+                        variant="contained"
+                      >
+                        Ver
                       </Button>
                       <Button
-                        variant='contained'
-                        color='error'
+                        variant="contained"
+                        color="error"
                       >
                         Eliminar
                       </Button>

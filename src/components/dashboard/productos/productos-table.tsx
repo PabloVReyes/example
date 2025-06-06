@@ -14,7 +14,6 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
-import dayjs from 'dayjs';
 
 import { useSelection } from '@/hooks/use-selection';
 import { Button, ButtonGroup } from '@mui/material';
@@ -23,30 +22,29 @@ function noop(): void {
   // do nothing
 }
 
-export interface Customer {
+export interface Producto {
   id: number;
   name: string;
-  email: string;
-  address: string;
-  phone: string;
-  createdAt: any;
+  price: number;
+  amount: number;
+  createdAt: string;
 }
 
-interface CustomersTableProps {
+interface ProductosTableProps {
   count?: number;
   page?: number;
-  rows?: Customer[];
+  rows?: Producto[];
   rowsPerPage?: number;
 }
 
-export function CustomersTable({
+export function ProductosTable({
   count = 0,
   rows = [],
   page = 0,
   rowsPerPage = 0,
-}: CustomersTableProps): React.JSX.Element {
+}: ProductosTableProps): React.JSX.Element {
   const rowIds = React.useMemo(() => {
-    return rows.map((customer) => customer.id);
+    return rows.map((producto) => producto.id);
   }, [rows]);
 
   const { selectAll, deselectAll, selectOne, deselectOne, selected } = useSelection(rowIds);
@@ -74,9 +72,8 @@ export function CustomersTable({
                 />
               </TableCell>
               <TableCell>Nombre</TableCell>
-              <TableCell>Correo</TableCell>
-              <TableCell>Localización</TableCell>
-              <TableCell>Telefono</TableCell>
+              <TableCell>Precio</TableCell>
+              <TableCell>Cantidad</TableCell>
               <TableCell>Registo</TableCell>
               <TableCell>Acciones</TableCell>
             </TableRow>
@@ -105,20 +102,21 @@ export function CustomersTable({
                       <Typography variant="subtitle2">{row.name}</Typography>
                     </Stack>
                   </TableCell>
-                  <TableCell>{row.email}</TableCell>
+                  <TableCell>${row.price}</TableCell>
                   <TableCell>
-                    {row.address}
+                    {row.amount}
                   </TableCell>
-                  <TableCell>{row.phone}</TableCell>
-                  <TableCell>{dayjs(row.createdAt).format('MMM D, YYYY')}</TableCell>
+                  <TableCell>{row.createdAt}</TableCell>
                   <TableCell>
                     <ButtonGroup>
-                      <Button variant='contained'>
+                      <Button
+                        variant="contained"
+                      >
                         Editar
                       </Button>
                       <Button
-                        variant='contained'
-                        color='error'
+                        variant="contained"
+                        color="error"
                       >
                         Eliminar
                       </Button>
