@@ -7,106 +7,105 @@ import {
     Plus as PlusIcon,
     Upload as UploadIcon
 } from 'phosphor-react';
+import { ProductosTabla, type Producto } from './productos-tabla';
+import { ProductosFiltros } from './productos-filtros';
 
-import type { Cliente } from './clientes-tabla';
-import { ClientesFiltros } from './clientes-filtros';
-import { ClientesTabla } from './clientes-tabla';
 
-const clientes = [
+const productos = [
     {
         id: 'USR-010',
-        name: 'Alcides Antonio',
-        avatar: '',
-        email: "mmacy0@boston.com",
-        phone: "642-812-4057",
+        name: "Weighted Blanket",
+        price: 10,
+        stock: 3,
+        sale: 88,
         createdAt: "8/12/2024",
     },
     {
         id: 'USR-009',
-        name: 'Marcus Finn',
-        avatar: '',
-        email: "jeady1@ucsd.edu",
-        phone: "610-639-1073",
+        name: "Coconut Oil Spray",
+        price: 13,
+        stock: 3,
+        sale: 23,
         createdAt: "6/15/2024",
     },
     {
         id: 'USR-008',
-        name: 'Jie Yan',
-        avatar: '',
-        email: "qritelli2@weebly.com",
-        phone: "153-505-4195",
+        name: "Kids Tablet",
+        price: 14,
+        stock: 32,
+        sale: 7,
         createdAt: "8/28/2024",
     },
     {
         id: 'USR-007',
-        name: 'Nasimiyu Danai',
-        avatar: '',
-        email: "fpretti3@bbb.org",
-        phone: "463-376-3778",
+        name: "Electric Wine Opener",
+        price: 28,
+        stock: 12344,
+        sale: 23,
         createdAt: "2/4/2025",
     },
     {
         id: 'USR-006',
-        name: 'Iulia Albu',
-        avatar: '',
-        email: "coakenfull4@yahoo.co.jp",
-        phone: "232-320-0811",
+        name: "Fall-Themed Table Runner",
+        price: 30,
+        stock: 400,
+        sale: 8,
         createdAt: "4/16/2025",
     },
     {
         id: 'USR-005',
-        name: 'Fran Perez',
-        avatar: '',
-        email: "bgwinnell5@networkadvertising.org",
-        phone: "546-717-9084",
+        name: "Vegetable Medley",
+        price: 20,
+        stock: 80,
+        sale: 2,
         createdAt: "2/13/2025",
     },
 
     {
         id: 'USR-004',
-        name: 'Penjani Inyene',
-        avatar: '',
-        email: "mmcmackin6@joomla.org",
-        phone: "332-889-5033",
+        name: "Tailored Dress Pants",
+        price: 12,
+        stock: 1234,
+        sale: 10,
         createdAt: "8/2/2024",
     },
     {
         id: 'USR-003',
-        name: 'Carson Darrin',
-        avatar: '',
-        email: "mpossek7@360.cn",
-        phone: "621-138-9291",
+        name: "Dark Chocolate Tart",
+        price: 34,
+        stock: 123,
+        sale: 0,
         createdAt: "7/17/2024"
     },
     {
         id: 'USR-002',
-        name: 'Siegbert Gottfried',
-        avatar: '',
-        email: "ccuniam8@1688.com",
-        phone: "575-778-2760",
+        name: "Sweet Potato Chips",
+        price: 98,
+        stock: 100,
+        sale: 2,
         createdAt: "9/26/2024",
     },
     {
         id: 'USR-001',
-        name: 'Miron Vitold',
-        avatar: '',
-        email: "apenwright9@acquirethisname.com",
-        phone: "958-789-8323",
+        name: "Avocado Lime Dressing",
+        price: 2,
+        stock: 39,
+        sale: 10,
         createdAt: "12/5/2024",
     },
-] satisfies Cliente[];
+] satisfies Producto[];
 
-export default function Clientes(): React.JSX.Element {
+export default function Productos(): React.JSX.Element {
     const page = 0;
     const rowsPerPage = 5;
 
-    const paginatedClientes = applyPagination(clientes, page, rowsPerPage);
+    const paginatedProductos = applyPagination(productos, page, rowsPerPage);
 
     return (
         <Stack spacing={3}>
             <Stack direction="row" spacing={3}>
                 <Stack spacing={1} sx={{ flex: '1 1 auto' }}>
-                    <Typography variant="h4">Clientes</Typography>
+                    <Typography variant="h4">Productos</Typography>
                     <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
                         <Button color="inherit" startIcon={<UploadIcon fontSize="var(--icon-fontSize-md)" />}>
                             Importar
@@ -118,21 +117,21 @@ export default function Clientes(): React.JSX.Element {
                 </Stack>
                 <div>
                     <Button startIcon={<PlusIcon fontSize="var(--icon-fontSize-md)" />} variant="contained">
-                        Agregar nuevo cliente
+                        Agregar nuevo producto
                     </Button>
                 </div>
             </Stack>
-            <ClientesFiltros />
-            <ClientesTabla
-                count={paginatedClientes.length}
+            <ProductosFiltros />
+            <ProductosTabla
+                count={paginatedProductos.length}
                 page={page}
-                rows={paginatedClientes}
+                rows={paginatedProductos}
                 rowsPerPage={rowsPerPage}
             />
         </Stack>
     );
 }
 
-function applyPagination(rows: Cliente[], page: number, rowsPerPage: number): Cliente[] {
+function applyPagination(rows: Producto[], page: number, rowsPerPage: number): Producto[] {
     return rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 }
