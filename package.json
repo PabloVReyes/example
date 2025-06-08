@@ -17,8 +17,10 @@
     "@fontsource/roboto-mono": "^5.2.6",
     "@hookform/resolvers": "^5.1.0",
     "@mui/material": "^7.1.1",
+    "apexcharts": "^4.7.0",
     "phosphor-react": "^1.4.1",
     "react": "^19.1.0",
+    "react-apexcharts": "^1.7.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",
     "zod": "^3.25.56"

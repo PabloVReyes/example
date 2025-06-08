@@ -9,7 +9,7 @@ import {
 } from 'phosphor-react'
 
 export const navIcons = {
-  'chart-pie': ChartPieIcon,
+  'resumen': ChartPieIcon,
   'gear-six': GearSixIcon,
   'plugs-connected': PlugsConnectedIcon,
   'x-square': XSquare,
