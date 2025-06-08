@@ -14,5 +14,5 @@ export const navIcons = {
   'plugs-connected': PlugsConnectedIcon,
   'x-square': XSquare,
   user: UserIcon,
-  users: UsersIcon,
+  clientes: UsersIcon,
 } as Record<string, Icon>;
