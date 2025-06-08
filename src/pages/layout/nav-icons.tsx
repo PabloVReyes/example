@@ -1,20 +1,16 @@
 import type { Icon } from 'phosphor-react';
 import {
-  ChartPie as ChartPieIcon,
-  GearSix as GearSixIcon,
-  PlugsConnected as PlugsConnectedIcon,
-  User as UserIcon,
-  Users as UsersIcon,
+  ChartPie,
+  Users,
   Barcode,
-  XSquare
+  Article,
+  Warning
 } from 'phosphor-react'
 
 export const navIcons = {
-  'resumen': ChartPieIcon,
-  'gear-six': GearSixIcon,
-  'plugs-connected': PlugsConnectedIcon,
-  'x-square': XSquare,
+  resumen: ChartPie,
+  facturas: Article,
   productos: Barcode,
-  user: UserIcon,
-  clientes: UsersIcon,
+  clientes: Users,
+  error: Warning
 } as Record<string, Icon>;
