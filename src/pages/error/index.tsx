@@ -24,7 +24,6 @@ export default function NotFound(): React.JSX.Element {
                 </Typography>
                 <Button
                     onClick={redirect}
-                    href={paths.home}
                     startIcon={<ArrowLeftIcon fontSize="var(--icon-fontSize-md)" />}
                     variant="contained"
                 >
